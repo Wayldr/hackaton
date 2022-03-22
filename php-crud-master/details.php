@@ -33,7 +33,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     header('Location: index.php');
 }
 ?>
-<?php require_once('header.php');?>
+<?php require_once('../header.php');?>
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -46,4 +46,4 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             </section>
         </div>
     </main>
-<?php require_once('footer.php');?>
+<?php require_once('../footer.php');?>
