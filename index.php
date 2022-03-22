@@ -61,11 +61,11 @@ require_once('close.php');
                         <div class="accordion-body">
                             <?php echo $produit['reponse']?>
                             <?php
-                                /* if (isAdmin()){  */
+                                if (isAdmin()){ 
                             ?>
                             <a href="edit.php?id=<?php echo $produit['id']?>" class="btn btn-primary">Modifer</a>
                             <?php
-                               /*  } */
+                                }
                             ?>
                         </div>
                         </div>
