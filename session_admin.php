@@ -1,5 +1,5 @@
 <?php
-session_start();
+/* session_start(); */
 function isAdmin(){
     if (!isset($_SESSION["profil"])){
         return false;

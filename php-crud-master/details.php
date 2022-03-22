@@ -1,6 +1,6 @@
 <?php
 // On démarre une session
-session_start();
+/* session_start(); */
 
 // Est-ce que l'id existe et n'est pas vide dans l'URL
 if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -33,15 +33,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     header('Location: index.php');
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du produit</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+<?php require_once('header.php');?>
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -54,5 +46,4 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             </section>
         </div>
     </main>
-</body>
-</html>
+<?php require_once('footer.php');?>
