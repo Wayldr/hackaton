@@ -125,4 +125,4 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             </section>
         </div>
     </main>
-<?php require_once('../footer.php');?>
+<?php require_once('footer.php');?>
