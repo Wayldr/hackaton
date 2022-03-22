@@ -47,6 +47,11 @@ if($_GET){
 
 ?>
 <?php require_once('header.php');?>
+<script>
+      tinymce.init({
+        selector: '#reponse'
+      });
+    </script>
     <main class="container">
         <div class="row">
             <section class="col-12">

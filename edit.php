@@ -79,6 +79,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 ?>
 <?php require_once('header.php');?>
+<script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -117,7 +122,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                     </div>
                     <div class="form-group">
                         <label for="reponse">reponse</label>
-                        <input type="text" id="reponse" name="reponse" class="form-control" value="<?php echo $result['reponse']?>">
+                        <input type="text" id="mytextarea" name="reponse" class="form-control" value="<?php echo $result['reponse']?>">
 
                     </div>
                     <input type="hidden" name="id" value="<?php echo $result['id']?>">
