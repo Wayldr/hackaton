@@ -1,5 +1,5 @@
 # hackaton
-projet FAq
+projet FAQ
 
 
 Commande pour acceder a une branche :
