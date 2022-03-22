@@ -39,9 +39,10 @@
             </nav>
         </div>
         <div class="container">
-            <a title="cv" href="img/CV_F.DOIDI.pdf" target="_blank">
+            <a title="cv" href="img/faq.pdf" target="_blank">
                 <button class="btn btn-primary p-3" type="button">Download FAQ</button>
             </a>
+            <p>dernière mise à jour le 17 mars 2022</p>
         </div>
 
     </header>
