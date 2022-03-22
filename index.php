@@ -81,6 +81,10 @@ require_once('close.php');
                 ?>
                 </div>
             </section>
+            <a href="#top"><div class="btn">Retourner en haut</div></a>
         </div>
+
+        
+        
     </main>
 <?php require_once('footer.php');?>
