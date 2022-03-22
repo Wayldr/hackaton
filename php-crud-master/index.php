@@ -5,7 +5,7 @@ session_start();
 // On inclut la connexion à la base
 require_once('connect.php');
 
-$sql = 'SELECT * FROM liste';
+$sql = 'SELECT id,name,question,reponse FROM themes,la_faq WHERE la_faq.id_themes=themes.id_themes';
 
 // On prépare la requête
 $query = $db->prepare($sql);
@@ -24,7 +24,7 @@ require_once('close.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des produits</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -46,38 +46,33 @@ require_once('close.php');
                             </div>';
                         $_SESSION['message'] = "";
                     }
+                    ?>
+                
+                <div class="accordion" id="accordionExample">
+                <?php foreach($result as $produit){
                 ?>
-                <h1>Liste des produits</h1>
-                <table class="table">
-                    <thead>
-                        <th>ID</th>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Nombre</th>
-                        <th>Actif</th>
-                        <th>Actions</th>
-                    </thead>
-                    <tbody>
-                        <?php
-                        // On boucle sur la variable result
-                        foreach($result as $produit){
-                        ?>
-                            <tr>
-                                <td><?= $produit['id'] ?></td>
-                                <td><?= $produit['produit'] ?></td>
-                                <td><?= $produit['prix'] ?></td>
-                                <td><?= $produit['nombre'] ?></td>
-                                <td><?= $produit['actif'] ?></td>
-                                <td><a href="disable.php?id=<?= $produit['id'] ?>">A/D</a> <a href="details.php?id=<?= $produit['id'] ?>">Voir</a> <a href="edit.php?id=<?= $produit['id'] ?>">Modifier</a> <a href="delete.php?id=<?= $produit['id'] ?>">Supprimer</a></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $produit['id']?>" aria-expanded="true" aria-controls="collapseOne">
+                            <?php  echo $produit['question']?>
+                        </button>
+                        </h2>
+                        <div id="collapse<?php echo $produit['id']?>" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <?php echo $produit['reponse']?>
+                        </div>
+                        </div>
+                    </div>
+                    <?php 
+                }
+                ?>
+                </div>
+                
+                
                 <a href="add.php" class="btn btn-primary">Ajouter un produit</a>
             </section>
         </div>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>
