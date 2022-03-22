@@ -15,7 +15,7 @@ $query->execute();
 
 // On stocke le résultat dans un tableau associatif
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
+$titre="";
 require_once('close.php');
 ?>
 <?php require_once('header.php');?>
@@ -50,11 +50,16 @@ require_once('close.php');
                 
                 <div class="accordion" id="accordionExample">
                 <?php foreach($result as $produit){
-                ?>
+                    if($titre != $produit['name']){
+                        ?><h2 class="text-center m-5"><?php echo $produit['name'];?></h2>
+                        <?php
+                        $titre = $produit['name'];
+                    }else{
+                ?> 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $produit['id']?>" aria-expanded="true" aria-controls="collapseOne">
-                            <?php  echo $produit['question']?>
+                            <strong><?php  echo $produit['question']?></strong>
                         </button>
                         </h2>
                         <div id="collapse<?php echo $produit['id']?>" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -70,7 +75,8 @@ require_once('close.php');
                         </div>
                         </div>
                     </div>
-                    <?php 
+                    <?php
+                    }
                 }
                 ?>
                 </div>
