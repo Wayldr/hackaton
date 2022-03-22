@@ -18,7 +18,6 @@
         <div class="container">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
-                    
                     <button class="btn btn-outline-success" type="submit"><a href="indentification.php">Administrateur</a></button>
                     <!--
                     <form class="d-flex">
