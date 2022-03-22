@@ -36,7 +36,7 @@
                 </div>
             </nav>
         </div>
-        <div class="pdf">
+        <div class="container">
             <a title="cv" href="img/CV_F.DOIDI.pdf" target="_blank">
                 <button class="btn btn-primary p-3" type="button">Download FAQ</button>
             </a>

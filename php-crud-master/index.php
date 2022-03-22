@@ -18,7 +18,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 require_once('close.php');
 ?>
-<?php require_once('../header.php');?>
+<?php require_once('header.php');?>
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -68,4 +68,4 @@ require_once('close.php');
             </section>
         </div>
     </main>
-<?php require_once('../footer.php');?>
+<?php require_once('footer.php');?>

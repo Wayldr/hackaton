@@ -38,7 +38,7 @@ if($_POST){
 
 // Est-ce que l'id existe et n'est pas vide dans l'URL
 if(isset($_GET['id']) && !empty($_GET['id'])){
-    require_once('../connect.php');
+    require_once('connect.php');
 
     // On nettoie l'id envoyé
     $id = strip_tags($_GET['id']);
@@ -81,24 +81,38 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                     }
                 ?>
                 <h1>Modifier un produit</h1>
-                <form method="post">
+                <form method="get">
                     <div class="form-group">
-                        <label for="produit">Thème</label>
-                        <input type="text" id="produit" name="produit" class="form-control" value="<?= $produit['produit']?>">
+                        <label for="id_themes">Themes</label>
+                        <select class="form-select" id="inputGroupSelect01" name="id_themes">
+                        <?php 
+                        foreach($resultat as $produit){
+                            if($produit['id_themes']==0){
+                        ?>
+                            <option selected value="<?php echo $produit['id_themes']?>" name="id_themes"><?php echo $produit['name'];?></option>
+                            <?php
+                            }else{
+                        ?>
+                            <option value="<?php echo $produit['id_themes']?>" name="id_themes"><?php echo $produit['name'];?></option>
+                            
+                        <?php
+                            }
+                        }
+                        ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="prix">Question</label>
-                        <input type="text" id="prix" name="prix" class="form-control" value="<?= $produit['prix']?>">
+                        <label for="question">question</label>
+                        <input type="text" id="question" name="question" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="reponse">reponse</label>
+                        <input type="text" id="reponse" name="reponse" class="form-control">
 
                     </div>
-                    <div class="form-group">
-                        <label for="nombre">Réponse</label>
-                        <input type="number" id="reponse" name="nombre" class="form-control" value="<?= $produit['nombre']?>">
-                    </div>
-                    <input type="hidden" value="<?= $produit['id']?>" name="id">
                     <button class="btn btn-primary">Envoyer</button>
                 </form>
             </section>
         </div>
     </main>
-<?php require_once('../footer.php');?>
+<?php require_once('footer.php');?>
