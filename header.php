@@ -14,13 +14,15 @@
     <title>FAQ</title>
 </head>
 <body>
-    <?php require_once('session_admin.php');?>
+    <?php session_start();
+    require_once('session_admin.php');
+    ?>
     <header>
         <div class="container">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
                     <?php
-                        session_start();
+                        
                         if (isAdmin()){ //test si l'admin est connecté
                             echo '<button class="btn btn-outline-danger" type="submit"><a href="deconnection.php">Déconnection</a></button>';
                         } else {
