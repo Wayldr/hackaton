@@ -9,7 +9,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     // On nettoie l'id envoyé
     $id = strip_tags($_GET['id']);
 
-    $sql = 'SELECT * FROM `liste` WHERE `id` = :id;';
+    $sql = 'SELECT * FROM `la_faq` WHERE `id` = :id;';
 
     // On prépare la requête
     $query = $db->prepare($sql);
@@ -30,7 +30,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         die();
     }
 
-    $sql = 'DELETE FROM `liste` WHERE `id` = :id;';
+    $sql = 'DELETE FROM `la_faq` WHERE `id` = :id;';
 
     // On prépare la requête
     $query = $db->prepare($sql);

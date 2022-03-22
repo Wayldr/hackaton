@@ -51,7 +51,7 @@ require_once('close.php');
                 <div class="accordion" id="accordionExample">
                 <?php foreach($result as $produit){
                     if($titre != $produit['name']){
-                        ?><h2 class="text-center m-5"><?php echo $produit['name'];?></h2>
+                        ?><h2  id="<?php echo $produit['id']?>" class="text-center m-5"><?php echo $produit['name'];?></h2>
                         <?php
                         $titre = $produit['name'];
                     }else{
@@ -69,6 +69,7 @@ require_once('close.php');
                                 if (isAdmin()){ 
                             ?>
                             <a href="edit.php?id=<?php echo $produit['id']?>" class="btn btn-primary">Modifer</a>
+                            <a href="delete.php?id=<?php echo $produit['id']?>" class="btn btn-danger">Supprimer</a>
                             <?php
                                 }
                             ?>
@@ -81,7 +82,7 @@ require_once('close.php');
                 ?>
                 </div>
             </section>
-            <a href="#top"><div class="btn">Retourner en haut</div></a>
+            <a href="#top"><div class="btn btn-dark m-3">Retourner en haut</div></a>
         </div>
 
         
