@@ -68,7 +68,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $result = $query->fetch();
 
     // On vérifie si le question existe
-    if(!$question){
+    if(!$result){
         $_SESSION['erreur'] = "Cet id n'existe pas";
         header('Location: index.php');
     }
@@ -113,16 +113,17 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                     </div>
                     <div class="form-group">
                         <label for="question">question</label>
-                        <input type="text" id="question" name="question" class="form-control" value="">
+                        <input type="text" id="question" name="question" class="form-control" value="<?php echo $result['question']?>">
                     </div>
                     <div class="form-group">
                         <label for="reponse">reponse</label>
-                        <input type="text" id="reponse" name="reponse" class="form-control">
+                        <input type="text" id="reponse" name="reponse" class="form-control" value="<?php echo $result['reponse']?>">
 
                     </div>
+                    <input type="hidden" name="id" value="<?php echo $result['id']?>">
                     <button class="btn btn-primary">Envoyer</button>
                 </form>
             </section>
         </div>
     </main>
-<?php require_once('../footer.php');?>
+<?php require_once('footer.php');?>
