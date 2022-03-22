@@ -38,7 +38,7 @@
                                     <a class="nav-link active" href="#1">Le Cadre Sanitaire</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#2">Tracer Tester Protéger</a>
+                                    <a class="nav-link " href="#2">Tracer Tester Protéger</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " href="#3">Apprentissage</a>

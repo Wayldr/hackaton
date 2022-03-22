@@ -5,7 +5,7 @@
 // On inclut la connexion à la base
 require_once('connect.php');
 
-$sql = 'SELECT id,name,question,reponse FROM themes,la_faq WHERE la_faq.id_themes=themes.id_themes';
+$sql = 'SELECT id,themes.id_themes,name,question,reponse FROM themes,la_faq WHERE la_faq.id_themes=themes.id_themes';
 
 // On prépare la requête
 $query = $db->prepare($sql);
@@ -51,7 +51,7 @@ require_once('close.php');
                 <div class="accordion" id="accordionExample">
                 <?php foreach($result as $produit){
                     if($titre != $produit['name']){
-                        ?><h2  id="<?php echo $produit['id']?>" class="text-center m-5"><?php echo $produit['name'];?></h2>
+                        ?><h2  id="<?php echo $produit['id_themes']?>" class="text-center m-5"><?php echo $produit['name'];?></h2>
                         <?php
                         $titre = $produit['name'];
                     }else{
