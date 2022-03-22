@@ -75,7 +75,7 @@ require_once('close.php');
                 ?>
                 </div>
             </section>
-            <a href="#top"><div class="btn">Retourner en haut</div></a>
+            <a href="#top"><span class="btn btn-primary">Retourner en haut</span></a>
         </div>
 
         
