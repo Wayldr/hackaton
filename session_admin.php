@@ -1,18 +1,4 @@
 <?php
-<<<<<<< HEAD
-/* Tout ce qui se passe ici sera afficher sera afficher quelque soit le profil*/
-
-session_start();
-if (!isset($_SESSION["profil"])){
-    return;
-}
-if ($_SESSION["profil"]!="admin") {
-    return;
-}
-/* Tout ce qui se passe ici sera afficher uniquement si on est connecté en tant qu'admin
- */
-
-=======
 session_start();
 function isAdmin(){
     if (!isset($_SESSION["profil"])){
@@ -34,7 +20,6 @@ if (isAdmin()){ //test si l'admin est connecté
 } 
 
 */
->>>>>>> a43a18181be3264af87f4e198111b0ae83e69d03
 ?>
 
 
