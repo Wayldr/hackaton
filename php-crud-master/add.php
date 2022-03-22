@@ -1,35 +1,47 @@
 <?php
 // On démarre une session
 session_start();
+require_once('connect.php');
+$sqlthemes = 'SELECT id_themes,name FROM themes';
 
-if($_POST){
-    if(isset($_POST['produit']) && !empty($_POST['produit'])
-    && isset($_POST['prix']) && !empty($_POST['prix'])
-    && isset($_POST['nombre']) && !empty($_POST['nombre'])){
+// On prépare la requête
+$querythemes = $db->prepare($sqlthemes);
+
+// On exécute la requête
+$querythemes->execute();
+
+// On stocke le résultat dans un tableau associatif
+$resultat = $querythemes->fetchAll(PDO::FETCH_ASSOC);
+
+if($_GET){
+    if(isset($_GET['question']) && !empty($_GET['question'])
+    && isset($_GET['reponse']) && !empty($_GET['reponse'])
+    && isset($_GET['id_themes']) && !empty($_GET['id_themes'])){
         // On inclut la connexion à la base
         require_once('connect.php');
 
         // On nettoie les données envoyées
-        $produit = strip_tags($_POST['produit']);
-        $prix = strip_tags($_POST['prix']);
-        $nombre = strip_tags($_POST['nombre']);
+        $question = strip_tags($_GET['question']);
+        $reponse = strip_tags($_GET['reponse']);
+        $id_themes = strip_tags($_GET['id_themes']);
 
-        $sql = 'INSERT INTO `liste` (`produit`, `prix`, `nombre`) VALUES (:produit, :prix, :nombre);';
+
+       
+
+        $sql = 'INSERT INTO `la_faq` (`question`, `reponse`, `id_themes`) VALUES (:question, :reponse, :id_themes);';
 
         $query = $db->prepare($sql);
 
-        $query->bindValue(':produit', $produit, PDO::PARAM_STR);
-        $query->bindValue(':prix', $prix, PDO::PARAM_STR);
-        $query->bindValue(':nombre', $nombre, PDO::PARAM_INT);
+        $query->bindValue(':question', $question, PDO::PARAM_STR);
+        $query->bindValue(':reponse', $reponse, PDO::PARAM_STR);
+        $query->bindValue(':id_themes', $id_themes, PDO::PARAM_INT);
 
         $query->execute();
 
-        $_SESSION['message'] = "Produit ajouté";
+        $_SESSION['message'] = "question ajouté";
         require_once('close.php');
 
         header('Location: index.php');
-    }else{
-        $_SESSION['erreur'] = "Le formulaire est incomplet";
     }
 }
 
@@ -39,9 +51,8 @@ if($_POST){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un produit</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Ajouter une question</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
     <main class="container">
@@ -55,20 +66,35 @@ if($_POST){
                         $_SESSION['erreur'] = "";
                     }
                 ?>
-                <h1>Ajouter un produit</h1>
-                <form method="post">
+                <h1>Ajouter un question</h1>
+                <form method="get">
                     <div class="form-group">
-                        <label for="produit">Produit</label>
-                        <input type="text" id="produit" name="produit" class="form-control">
+                        <label for="id_themes">Themes</label>
+                        <select class="form-select" id="inputGroupSelect01" name="id_themes">
+                        <?php 
+                        foreach($resultat as $produit){
+                            if($produit['id_themes']==0){
+                        ?>
+                            <option selected value="<?php echo $produit['id_themes']?>" name="id_themes"><?php echo $produit['name'];?></option>
+                            <?php
+                            }else{
+                        ?>
+                            <option value="<?php echo $produit['id_themes']?>" name="id_themes"><?php echo $produit['name'];?></option>
+                            
+                        <?php
+                            }
+                        }
+                        ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="prix">Prix</label>
-                        <input type="text" id="prix" name="prix" class="form-control">
+                        <label for="question">question</label>
+                        <input type="text" id="question" name="question" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="reponse">reponse</label>
+                        <input type="text" id="reponse" name="reponse" class="form-control">
 
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="number" id="nombre" name="nombre" class="form-control">
                     </div>
                     <button class="btn btn-primary">Envoyer</button>
                 </form>
