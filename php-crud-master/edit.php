@@ -38,7 +38,7 @@ if($_POST){
 
 // Est-ce que l'id existe et n'est pas vide dans l'URL
 if(isset($_GET['id']) && !empty($_GET['id'])){
-    require_once('connect.php');
+    require_once('../connect.php');
 
     // On nettoie l'id envoyé
     $id = strip_tags($_GET['id']);
@@ -101,4 +101,4 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             </section>
         </div>
     </main>
-<?php require_once('footer.php');?>
+<?php require_once('../footer.php');?>

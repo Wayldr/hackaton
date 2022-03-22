@@ -46,7 +46,7 @@ if($_GET){
 }
 
 ?>
-<?php require_once('header.php');?>
+<?php require_once('../header.php');?>
     <main class="container">
         <div class="row">
             <section class="col-12">
@@ -93,4 +93,4 @@ if($_GET){
             </section>
         </div>
     </main>
-<?php require_once('footer.php');?>
+<?php require_once('../footer.php');?>
