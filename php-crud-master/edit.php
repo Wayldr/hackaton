@@ -76,6 +76,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <title>Modifier un produit</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script>
+      tinymce.init({
+        selector: 'textarea#reponse'
+      });
+    </script>
 </head>
 <body>
     <main class="container">
@@ -92,17 +97,17 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                 <h1>Modifier un produit</h1>
                 <form method="post">
                     <div class="form-group">
-                        <label for="produit">Produit</label>
+                        <label for="produit">Thème</label>
                         <input type="text" id="produit" name="produit" class="form-control" value="<?= $produit['produit']?>">
                     </div>
                     <div class="form-group">
-                        <label for="prix">Prix</label>
+                        <label for="prix">Question</label>
                         <input type="text" id="prix" name="prix" class="form-control" value="<?= $produit['prix']?>">
 
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="number" id="nombre" name="nombre" class="form-control" value="<?= $produit['nombre']?>">
+                        <label for="nombre">Réponse</label>
+                        <input type="number" id="reponse" name="nombre" class="form-control" value="<?= $produit['nombre']?>">
                     </div>
                     <input type="hidden" value="<?= $produit['id']?>" name="id">
                     <button class="btn btn-primary">Envoyer</button>
