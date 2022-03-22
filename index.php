@@ -14,10 +14,18 @@
     <title>FAQ</title>
 </head>
 <body>
+    <?php require_once('session_admin.php');?>
     <header>
         <div class="container">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
+                    <?php
+                        if (isAdmin()){ //test si l'admin est connecté
+                            echo '<button class="btn btn-outline-danger" type="submit"><a href="deconnection.php">Déconnection</a></button>';
+                        } else {
+                            echo '<button class="btn btn-outline-success" type="submit"><a href="indentification.php">Administrateur</a></button>';
+                        }
+                    ?>
                     <button class="btn btn-outline-success" type="submit"><a href="indentification.php">Administrateur</a></button>
                     <!--
                     <form class="d-flex">
